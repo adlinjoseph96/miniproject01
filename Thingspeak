@@ -1,0 +1,42 @@
+#include <ESP8266WiFi.h>
+// Set these to run example.
+#define WIFI_SSID "CrystalWeapon"
+#define WIFI_PASSWORD "123456789"
+
+String apiKey = "Your API of thingsspeak";
+const char* server = "api.thingspeak.com";
+
+WiFiClient client;
+float hum;  // Stores humidity value
+float temp; // Stores temperature valuex
+int mosiureValue; // Store moisure value from sensor
+int rainDropValue; // Store rain drop value from sensor
+
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600); // Serial communication initialisation
+  Serial.println("Arduino Weather Station:-");
+  Serial.println("Project by Adarsh, Swathy and Adlin.");
+  // connect to wifi.
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("connecting");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+  Serial.println();
+  Serial.print("connected: ");
+  Serial.println(WiFi.localIP());
+  pinMode(MOISURESEN, INPUT); // Moisure sensor pin initialisation
+  pinMode(RAINDROP, INPUT); // Rain drop sensor pin initialisation
+  dht.begin(); // DHT sensor initialization
+  Serial.println("DHT11 initialised.");
+  
+  Serial.println();
+  Serial.print("connected: ");
+  Serial.println(WiFi.localIP());
+  pinMode(MOISURESEN, INPUT); // Moisure sensor pin initialisation
+  pinMode(RAINDROP, INPUT); // Rain drop sensor pin initialisation
+  dht.begin(); // DHT sensor initialization
+  Serial.println("DHT11 initialised.");
+  }
