@@ -84,3 +84,11 @@ display.clearDisplay();
   display.display();
   delay(1000);
 }
+void loop() {
+  // put your main code here, to run repeatedly:
+  hum = dht.readHumidity(); // Read humidity from sensor and store in variable.
+  temp= dht.readTemperature(); // Read temperature from sensor and store in variable.
+  mosiureValue = analogRead(MOISURESEN); // Read moisure value from sensor and store in variable
+  rainDropValue = digitalRead(RAINDROP); // Read rain drop value from sensor and store in variable
+  mosiureValue = map(mosiureValue,1022,0,0,100);
+
