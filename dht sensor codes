@@ -14,8 +14,7 @@ float temp; // Stores temperature valuex
 //setting up the connection
 void setup() {
   // put your setup code here, to run once:
-  Serial.begin(9600); // Serial communication initialisation
-  Serial.println("Arduino Weather Station:-");
+  Serial.begin(9600)Mini Weather Station:-");
   Serial.println("Project by Adarsh, Swathy and Adlin.");
   // connect to wifi.
   WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
@@ -24,6 +23,13 @@ void setup() {
     Serial.print(".");
     delay(500);
   }
+  Serial.println();
+  Serial.print("connected: ");
+  Serial.println(WiFi.localIP());
+   dht.begin(); // DHT sensor initialization
+  Serial.println("DHT11 initialised.");
+  if(!display.begin(SSD1306_SWITCHCAPVCC)) {
+    
+    for(;;); // 
   
   
-  //
