@@ -1,0 +1,25 @@
+if (client.connect(server,80)) {
+    String postStr = apiKey;
+    postStr +="&humidity=";
+    postStr += String(hum);
+    postStr +="&temperature=";
+    postStr += String(temp);
+    postStr +="&moisure-percentage=";
+    postStr += String(mosiureValue);
+    postStr +="&rain-drop=";
+    postStr += String(rainDropValue);
+    postStr += "\r\n\r\n";
+
+    client.print("POST /update HTTP/1.1\n");
+    client.print("Host: api.thingspeak.com\n");
+    client.print("Connection: close\n");
+    client.print("X-THINGSPEAKAPIKEY: "+apiKey+"\n");
+    client.print("Content-Type: application/x-www-form-urlencoded\n");
+    client.print("Content-Length: ");
+    client.print(postStr.length());
+    client.print("\n\n");
+    client.print(postStr);
+  }
+  client.stop();
+  delay(5000);
+}
