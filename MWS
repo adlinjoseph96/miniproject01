@@ -149,3 +149,14 @@ void loop() {
   Serial.print(", Rain drop value: ");
   Serial.println(rainDropValue);
   delay(500);
+ if (client.connect(server,80)) {
+    String postStr = apiKey;
+    postStr +="&humidity=";
+    postStr += String(hum);
+    postStr +="&temperature=";
+    postStr += String(temp);
+    postStr +="&moisure-percentage=";
+    postStr += String(mosiureValue);
+    postStr +="&rain-drop=";
+    postStr += String(rainDropValue);
+    postStr += "\r\n\r\n";
