@@ -138,3 +138,14 @@ void loop() {
   display.print(rainDropValue);
   display.display();
   delay(500);
+  Serial.print("Humidity: ");
+  Serial.print(hum);
+  Serial.print(" %, Temp: ");
+  Serial.print(temp);
+  Serial.print(" Celsius");
+  Serial.print(", Moisure value: ");
+  Serial.print(mosiureValue);
+  Serial.print(" %");
+  Serial.print(", Rain drop value: ");
+  Serial.println(rainDropValue);
+  delay(500);
