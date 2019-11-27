@@ -1,0 +1,59 @@
+#include <SPI.h> // For SPI communication for OLED
+#include <Wire.h> // For i2C communication for OLED
+#include <ESP8266WiFi.h>
+
+// OLED
+#include <Adafruit_GFX.h> // OLED library
+#include <Adafruit_SSD1306.h> // OLED library
+#define SCREEN_WIDTH 128 // OLED width
+#define SCREEN_HEIGHT 64 // OLED height
+#define OLED_MOSI  D7
+#define OLED_CLK   D5
+#define OLED_DC    D2
+#define OLED_CS    D8
+#define OLED_RESET D3
+
+Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT,
+  OLED_MOSI, OLED_CLK, OLED_DC, OLED_RESET, OLED_CS);
+  
+void setup() {
+  // put your setup code here, to run once:
+  Serial.begin(9600); // Serial communication initialisation
+  Serial.println("Arduino Weather Station:-");
+  Serial.println("Project by Adarsh, Swathy and Adlin.");
+  // connect to wifi.
+  WiFi.begin(WIFI_SSID, WIFI_PASSWORD);
+  Serial.print("connecting");
+  while (WiFi.status() != WL_CONNECTED) {
+    Serial.print(".");
+    delay(500);
+  }
+  
+  pinMode(MOISURESEN, INPUT); // Moisure sensor pin initialisation
+   if(!display.begin(SSD1306_SWITCHCAPVCC)) {
+    
+    for(;;); // 
+  }
+  display.clearDisplay();
+  display.display();
+  display.clearDisplay();
+  display.setTextSize(2);
+  display.setTextColor(WHITE);
+  display.setCursor(0,10);
+  display.print("Arduino");
+  display.setCursor(0,30);
+  display.print("Weather");
+  display.setCursor(0,50);
+  display.print("Station");
+  display.display();
+  delay(1000);
+  display.clearDisplay();
+  display.setCursor(0,10);
+  display.print("By Adarsh");
+  display.setCursor(0,30);
+  display.print("Swathy");
+  display.setCursor(0,50);
+  display.print("Adlin");
+  display.display();
+  delay(1000);
+}
