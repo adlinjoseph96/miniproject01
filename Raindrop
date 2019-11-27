@@ -1,8 +1,11 @@
 #define RAINDROP D6 // Rain drop sensor pin number
 int rainDropValue; // Store rain drop value from sensor
 void setup() {
- pinMode(RAINDROP, INPUT); 
+Serial.print(", Rain drop value: ");
+  Serial.println(rainDropValue);
+  delay(500); 
  }
+ pinMode(RAINDROP, INPUT); 
 
 void loop() {
  rainDropValue = digitalRead(RAINDROP); // Read rain drop value from sensor and store in variable
